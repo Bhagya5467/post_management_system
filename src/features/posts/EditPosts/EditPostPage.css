@@ -1,0 +1,42 @@
+.edit-post-page {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.edit-post-page h2 {
+  text-align: center;
+  color: #333;
+}
+
+.edit-post-page form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.edit-post-page label {
+  font-weight: bold;
+  color: #555;
+}
+
+.edit-post-page input,
+.edit-post-page textarea {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.edit-post-page button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.edit-post-page button:hover {
+  background-color: #0056b3;
+}
