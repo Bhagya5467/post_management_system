@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { deletePost } from './postsSlice';
-import { Post } from './types';
-import './PostsList.css';
 import { RootState } from '../../app/store';
+import './PostsList.css';
 
 const PostsList = () => {
   const postsStore = useSelector((state: RootState) => state.posts);

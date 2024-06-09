@@ -1,11 +1,11 @@
-import React, { useState, useEffect, ChangeEvent } from 'react';
+import { useState, ChangeEvent, FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
 import { RootState } from '../../../app/store';
 import { updatePost, selectPostById } from '../postsSlice';
 import './EditPostPage.css';
 
-const EditPostPage: React.FC = () => {
+const EditPostPage: FC = () => {
   const { postId } = useParams<{ postId: string }>();
 
   const post = useSelector((state: RootState) =>
@@ -17,12 +17,6 @@ const EditPostPage: React.FC = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  useEffect(() => {
-    if (!post) {
-      navigate('/');
-    }
-  }, [post, navigate]);
 
   const onTitleChanged = (event: ChangeEvent<HTMLInputElement>) =>
     setTitle(event.target.value);

@@ -11,6 +11,8 @@ const postsSlice = createSlice({
   reducers: {
     addPost(state, action: PayloadAction<Post>) {
       state.push(action.payload);
+
+      return state;
     },
     updatePost(state, action: PayloadAction<Post>) {
       const { id, title, content } = action.payload;
@@ -21,9 +23,12 @@ const postsSlice = createSlice({
         existingPost.title = title;
         existingPost.content = content;
       }
+
+      return state;
     },
     deletePost: (state, action: PayloadAction<string>) => {
       state = state.filter((post) => post.id !== action.payload);
+
       return state;
     },
   },

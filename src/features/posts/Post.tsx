@@ -1,4 +1,4 @@
-import React from 'react';
+import { FC } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { deletePost } from './postsSlice';
@@ -8,7 +8,7 @@ interface PostProps {
   post: PostType;
 }
 
-const Post: React.FC<PostProps> = ({ post }) => {
+const Post: FC<PostProps> = ({ post }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -21,13 +21,17 @@ const Post: React.FC<PostProps> = ({ post }) => {
   };
 
   return (
-    <article className='post'>
-          <h3>{post.title}</h3>
-          <p>{post.content.substring(0, 100)}</p>
-          <div className='post-buttons'>
-            <button type="button" onClick={onEditPostClicked}>Edit</button>
-            <button type="button" onClick={onDeletePostClicked}>Delete</button>
-          </div>
+    <article className="post">
+      <h3>{post.title}</h3>
+      <p>{post.content}</p>
+      <div className="post-buttons">
+        <button type="button" onClick={onEditPostClicked}>
+          Edit
+        </button>
+        <button type="button" onClick={onDeletePostClicked}>
+          Delete
+        </button>
+      </div>
     </article>
   );
 };

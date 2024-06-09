@@ -1,35 +1,36 @@
-import React, { useState } from 'react';
-import './AddPostForm.css';
+import { FC, FormEvent, useState } from 'react';
 import { nanoid } from '@reduxjs/toolkit';
 import { useDispatch } from 'react-redux';
 import { addPost } from '../postsSlice';
 import { Post } from '../types';
 import { useNavigate } from 'react-router-dom';
+import './AddPostForm.css';
 
-interface AddPostFormProps {
-  onAddPost: (post: { title: string; content: string; id: string }) => void;
-}
-
-const AddPostForm: React.FC<AddPostFormProps> = ({ onAddPost }) => {
+const AddPostForm: FC = () => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [errors, setErrors] = useState<{ title?: string; content?: string }>(
     {}
   );
+
   const [showPopup, setShowPopup] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const validate = () => {
     const newErrors: { title?: string; content?: string } = {};
+
     if (!title) newErrors.title = 'Title is required';
     if (!content) newErrors.content = 'Content is required';
+
     return newErrors;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = (event: FormEvent) => {
+    event.preventDefault();
+
     const validationErrors = validate();
+
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
     } else {
